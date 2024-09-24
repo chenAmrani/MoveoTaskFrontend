@@ -4,7 +4,10 @@ let socket: Socket;
 
 export const initSocketConnection = () => {
   socket = io(`https://moveo-task-backend.vercel.app`, {
-    transports: ['polling'], // Force polling since WebSockets are not supported
+    path: '/socket.io',  
+    transports: ['polling']
   });
   return socket;
 };
+
+
