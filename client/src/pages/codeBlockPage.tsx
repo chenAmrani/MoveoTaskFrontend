@@ -10,12 +10,12 @@ import { CodeBlock } from '../pages/LobbyPage';
 const CodeBlockPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [role, setRole] = useState<'mentor' | 'student'>('student'); // Default to student
-  const [code, setCode] = useState(''); // Code that is being edited/displayed
-  const [codeBlockTitle, setCodeBlockTitle] = useState<string>(''); // Code block title
-  const [studentCount, setStudentCount] = useState<number>(0); // Number of students in the room
-  const [socket, setSocket] = useState<ReturnType<typeof initSocketConnection> | null>(null); // Socket connection
-  const [showSmiley, setShowSmiley] = useState(false); // Whether to show smiley face
+  const [role, setRole] = useState<'mentor' | 'student'>('student'); 
+  const [code, setCode] = useState(''); 
+  const [codeBlockTitle, setCodeBlockTitle] = useState<string>(''); 
+  const [studentCount, setStudentCount] = useState<number>(0); 
+  const [socket, setSocket] = useState<ReturnType<typeof initSocketConnection> | null>(null); 
+  const [showSmiley, setShowSmiley] = useState(false); 
 
   // Fetch code block details when the page is loaded
   useEffect(() => {
