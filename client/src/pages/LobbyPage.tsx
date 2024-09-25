@@ -17,9 +17,7 @@ const LobbyPage: React.FC = () => {
     const fetchCodeBlocks = async () => {
       try {
         const response = await axios.get<CodeBlock[]>(`https://tom-live-code.up.railway.app/codeblocks`); 
-        console.log("Response data:", response.data);
         setCodeBlocks(response.data);
-        console.log("CodeBlocks!!!!:", codeBlocks);
       } catch (error) {
         console.error('Error fetching code blocks:', error);
       }
@@ -29,7 +27,6 @@ const LobbyPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Updated codeBlocks:", codeBlocks);
   }, [codeBlocks]);
 
   return (
