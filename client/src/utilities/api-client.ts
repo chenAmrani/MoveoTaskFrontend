@@ -1,14 +1,10 @@
-import { io} from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 
-// let socket: Socket;
+let socket: Socket;
 
-  export const initSocketConnection = () => {
-    return io("https://moveo-task-backend.vercel.app", {
-      path: "/socket.io", 
-      transports: ["polling"],  
-      withCredentials: true
-  });
-  // return socket;
+export const initSocketConnection = () => {
+  socket = io('https://tom-live-code.up.railway.app'); 
+  return socket;
 };
 
 

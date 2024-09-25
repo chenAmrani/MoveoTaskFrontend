@@ -130,7 +130,7 @@ const CodeBlockPage: React.FC = () => {
   useEffect(() => {
     const fetchCodeBlock = async () => {
       try {
-        const response = await axios.get<CodeBlock>(`https://moveo-task-backend.vercel.app/codeblocks/${id}`);
+        const response = await axios.get<CodeBlock>(`https://tom-live-code.up.railway.app/codeblocks/${id}`);
         setCodeBlockTitle(response.data.blockTitle);
         setCode(response.data.blockCode);
       } catch (error) {
@@ -140,35 +140,34 @@ const CodeBlockPage: React.FC = () => {
     fetchCodeBlock();
   }, [id]);
 
-  // Initialize the socket connection and handle socket events
+ 
   useEffect(() => {
     const socket = initSocketConnection();
     setSocket(socket);
 
-    // Join the code block room
+
     socket.emit('joinCodeBlock', id);
 
-    // Handle role assignment for the current user
+    
     socket.on('roleAssignment', ({ role }) => {
       setRole(role);
     });
 
-    // Update the code when a change is broadcasted
     socket.on('codeUpdate', (newCode: string) => {
       setCode(newCode);
     });
 
-    // Listen for updates to student count in the room
+
     socket.on('studentCount', ({ studentCount }) => {
       setStudentCount(studentCount);
     });
 
-    // Show the smiley face when the condition is met (from server)
+
     socket.on('showSmiley', () => {
       setShowSmiley(true);
     });
 
-    // Handle disconnection and cleanup
+    
     return () => {
       if (role === 'mentor') {
         socket.emit('mentorLeft', { codeBlockId: id });
@@ -177,7 +176,7 @@ const CodeBlockPage: React.FC = () => {
     };
   }, [id, role, navigate]);
 
-  // Handle code change (student sends updates)
+
   const handleCodeChange = (newCode: string) => {
     setCode(newCode);
     if (role === 'student') {
