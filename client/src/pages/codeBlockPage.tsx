@@ -50,7 +50,7 @@ const CodeBlockPage: React.FC = () => {
 
     socket.on('mentorLeft', () => {
       if (role === 'student') {
-        navigate('/LobbyPage'); 
+        navigate('/'); 
       }
     });
 
