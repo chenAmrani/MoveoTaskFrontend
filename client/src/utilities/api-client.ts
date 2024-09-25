@@ -1,13 +1,13 @@
-import { io, Socket } from 'socket.io-client';
+import { io} from 'socket.io-client';
 
-let socket: Socket;
+// let socket: Socket;
 
-export const initSocketConnection = () => {
-  socket = io(`https://moveo-task-backend.vercel.app`, {
-    path: '/socket.io',  
-    transports: ['polling']
+  export const initSocketConnection = () => {
+    return io("https://moveo-task-backend.vercel.app", {
+      path: "/socket.io", 
+      withCredentials: true
   });
-  return socket;
+  // return socket;
 };
 
 
